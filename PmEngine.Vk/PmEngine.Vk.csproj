@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PackageId>PmEngine.Vk</PackageId>
+		<PackageIconUrl>http://zzz-korp.3dn.ru/PmVk.png</PackageIconUrl>
+		<Description>Дополнение для ВК</Description>
+		<Authors>NerZul121</Authors>
+		<Company>pmgames.studio</Company>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<Import Project="..\VersionBuilder.props" />
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="PmEngine.Core" Version="1.0.1113.1459" />
+		<PackageReference Include="VkNet" Version="1.77.0-alpha-97" />
+	</ItemGroup>
+
+</Project>
