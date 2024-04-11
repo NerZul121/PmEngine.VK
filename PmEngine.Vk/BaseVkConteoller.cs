@@ -103,7 +103,7 @@ namespace PmEngine.Vk
                     if (msg.Attachments.First().Instance is Photo)
                         session.InputAction.Arguments.Set("inputData", ((Photo)msg.Attachments.First().Instance).Sizes.OrderByDescending(s => s.Width).ThenByDescending(s => s.Height).First().Url.ToString());
 
-                    await processor.ActionProcess(session.InputAction, session, session.InputAction.Arguments);
+                    await processor.ActionProcess(session.InputAction, session);
                 }
 
                 return true;
@@ -116,7 +116,7 @@ namespace PmEngine.Vk
 
             if (act is not null)
             {
-                await processor.ActionProcess(act, session, act.Arguments);
+                await processor.ActionProcess(act, session);
                 return true;
             }
             else if (msg.Text.StartsWith("/"))
@@ -128,7 +128,7 @@ namespace PmEngine.Vk
             else if (session.InputAction != null)
             {
                 session.InputAction.Arguments.Set("inputData", msg.Text);
-                await processor.ActionProcess(session.InputAction, session, session.InputAction.Arguments);
+                await processor.ActionProcess(session.InputAction, session);
                 return true;
             }
 

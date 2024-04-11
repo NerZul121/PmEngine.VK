@@ -10,6 +10,8 @@
 		<Authors>NerZul121</Authors>
 		<Company>pmgames.studio</Company>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<RepositoryUrl>https://github.com/NerZul121/PmEngine.VK</RepositoryUrl>
 	</PropertyGroup>
 
 	<Import Project="..\VersionBuilder.props" />
@@ -20,8 +22,8 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="PmEngine.Core" Version="1.0.1113.1459" />
-		<PackageReference Include="VkNet" Version="1.77.0-alpha-97" />
+		<PackageReference Include="PmEngine.Core" Version="1.81.411.1118" />
+		<PackageReference Include="VkNet" Version="1.79.0-alpha-108" />
 	</ItemGroup>
 
 </Project>
