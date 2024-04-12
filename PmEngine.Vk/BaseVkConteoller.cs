@@ -90,7 +90,7 @@ namespace PmEngine.Vk
 
             session.SetDefaultOutput<IVkOutputManager>();
 
-            var stringed = session.NextActions is not null ? session.NextActions.NumeredDuplicates().GetFloatNextActions() : Enumerable.Empty<IActionWrapper>();
+            var stringed = session.NextActions is not null ? session.NextActions.NumeredDuplicates().GetFloatNextActions() : Enumerable.Empty<ActionWrapper>();
 
             var processor = serviceProvider.GetRequiredService<IEngineProcessor>();
 

@@ -36,12 +36,12 @@ namespace PmEngine.Vk
             await VkApi.Messages.DeleteAsync(new ulong[] { (ulong)messageId });
         }
 
-        public Task EditContent(int messageId, string content, INextActionsMarkup? nextActions = null, IEnumerable<object>? media = null, IActionArguments? additionals = null)
+        public Task EditContent(int messageId, string content, INextActionsMarkup? nextActions = null, IEnumerable<object>? media = null, Arguments? additionals = null)
         {
             return Task.CompletedTask;
         }
 
-        public async Task<int> ShowContent(string content, INextActionsMarkup? nextActions = null, IEnumerable<object>? media = null, IActionArguments? additionals = null)
+        public async Task<int> ShowContent(string content, INextActionsMarkup? nextActions = null, IEnumerable<object>? media = null, Arguments? additionals = null)
         {
             var message = new MessagesSendParams()
             {

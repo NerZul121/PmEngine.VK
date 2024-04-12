@@ -1,4 +1,5 @@
-﻿using PmEngine.Core.Interfaces;
+﻿using PmEngine.Core;
+using PmEngine.Core.Interfaces;
 using VkNet.Abstractions;
 
 namespace PmEngine.Vk
@@ -9,7 +10,7 @@ namespace PmEngine.Vk
         IVkApi VkApi { get; }
 
         Task DeleteMessage(int messageId);
-        Task EditContent(int messageId, string content, INextActionsMarkup? nextActions = null, IEnumerable<object>? media = null, IActionArguments? additionals = null);
-        Task<int> ShowContent(string content, INextActionsMarkup? nextActions = null, IEnumerable<object>? media = null, IActionArguments? additionals = null);
+        Task EditContent(int messageId, string content, INextActionsMarkup? nextActions = null, IEnumerable<object>? media = null, Arguments? additionals = null);
+        Task<int> ShowContent(string content, INextActionsMarkup? nextActions = null, IEnumerable<object>? media = null, Arguments? additionals = null);
     }
 }
