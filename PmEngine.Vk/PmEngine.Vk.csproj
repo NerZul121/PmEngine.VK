@@ -17,12 +17,12 @@
 	<Import Project="..\VersionBuilder.props" />
 	
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="PmEngine.Core" Version="1.88.412.1945" />
+		<PackageReference Include="PmEngine.Core" Version="1.88.1023.1008" />
 		<PackageReference Include="VkNet" Version="1.79.0-alpha-108" />
 	</ItemGroup>
 
