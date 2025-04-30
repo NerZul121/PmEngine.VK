@@ -22,7 +22,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="PmEngine.Core" Version="1.88.1023.1008" />
+		<PackageReference Include="PmEngine.Core" Version="1.886.310.2029" />
 		<PackageReference Include="VkNet" Version="1.79.0-alpha-108" />
 	</ItemGroup>
 
