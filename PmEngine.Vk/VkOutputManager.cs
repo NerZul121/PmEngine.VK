@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Net;
 using VkNet.Enums.StringEnums;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace PmEngine.Vk
 {
@@ -43,6 +44,10 @@ namespace PmEngine.Vk
 
         public async Task<int> ShowContent(string content, INextActionsMarkup? nextActions = null, IEnumerable<object>? media = null, Arguments? additionals = null)
         {
+            if (!string.IsNullOrEmpty(content))
+                foreach (var tr in _userData.Owner.Services.GetServices<ITextRefactor>())
+                    content = await tr.Refactoring(content, _userData.Owner);
+
             var message = new MessagesSendParams()
             {
                 UserId = _userData.Owner.VkId(),
