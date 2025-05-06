@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PackageId>PmEngine.Vk</PackageId>
@@ -17,12 +17,8 @@
 	<Import Project="..\VersionBuilder.props" />
 	
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="PmEngine.Core" Version="1.886.310.2029" />
+		<PackageReference Include="PmEngine.Core" Version="1.905.506.1408" />
 		<PackageReference Include="VkNet" Version="1.79.0-alpha-108" />
 	</ItemGroup>
 
