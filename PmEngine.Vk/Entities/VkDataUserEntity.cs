@@ -8,6 +8,8 @@ namespace PmEngine.Vk.Entities
     public class VkDataUserEntity : IDataEntity
     {
         public virtual UserEntity Owner { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
         public long VkId { get; set; }
     }
 }

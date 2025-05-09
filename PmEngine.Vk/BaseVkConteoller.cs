@@ -29,7 +29,7 @@ namespace PmEngine.Vk
                 if (msg?.FromId is null)
                     return false;
 
-                vkUser = await GetOrCreateUser(msg.FromId ?? -1, serviceProvider);
+                vkUser = await GetOrCreateUser(msg, serviceProvider);
 
                 user = vkUser?.Owner;
 
@@ -54,32 +54,36 @@ namespace PmEngine.Vk
                 throw new Exception("Sorry, your account has blocked :(");
         }
 
-        public virtual async Task<VkDataUserEntity> GetOrCreateUser(long vkId, IServiceProvider serviceProvider, long? userId = null)
+        public virtual async Task<VkDataUserEntity> GetOrCreateUser(Message msg, IServiceProvider serviceProvider, long? userId = null)
         {
-            VkDataUserEntity? vkUser = null;
-
-            await serviceProvider.GetRequiredService<IContextHelper>().InContext(async (context) =>
+            return await serviceProvider.GetRequiredService<IContextHelper>().InContext(async (context) =>
             {
-                vkUser = await context.Set<VkDataUserEntity>().AsNoTracking().Include(u => u.Owner).FirstOrDefaultAsync(p => p.VkId == vkId);
+                var vkUser = await context.Set<VkDataUserEntity>().AsNoTracking().Include(u => u.Owner).FirstOrDefaultAsync(p => p.VkId == msg.FromId.Value);
 
                 if (vkUser is null)
                 {
-                    vkUser = new VkDataUserEntity() { VkId = vkId };
+                    vkUser = new VkDataUserEntity() { VkId = msg.FromId.Value };
+
+                    var vkApi = serviceProvider.GetRequiredService<IVkApi>();
+                    var userInfo = await vkApi.Users.GetAsync(new[] { msg.FromId.Value });
+                    var vkUserData = userInfo.FirstOrDefault();
+
+                    if (vkUserData != null)
+                    {
+                        vkUser.Name = vkUserData.FirstName;
+                        vkUser.LastName = vkUserData.LastName;
+                    }
+
                     if (userId is not null)
                         vkUser.Owner = context.Set<UserEntity>().First(u => u.Id == userId);
                     else
                         vkUser.Owner = new();
 
                     await context.Set<VkDataUserEntity>().AddAsync(vkUser);
-
                     await context.SaveChangesAsync();
-                    context.Entry(vkUser).State = EntityState.Detached;
                 }
-
-                vkUser = await context.Set<VkDataUserEntity>().AsNoTracking().Include(u => u.Owner).FirstOrDefaultAsync(p => p.VkId == vkId);
+                return vkUser;
             });
-
-            return vkUser;
         }
 
         public virtual async Task<bool> UserProcess(Message msg, IUserSession session, IVkApi client, ILogger logger, IServiceProvider serviceProvider)
