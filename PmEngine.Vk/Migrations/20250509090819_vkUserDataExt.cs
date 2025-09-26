@@ -23,12 +23,6 @@ namespace PmEngine.Vk.Migrations
                 type: "text",
                 nullable: false,
                 defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "SessionData",
-                table: "UserEntity",
-                type: "text",
-                nullable: true);
         }
 
         /// <inheritdoc />
@@ -41,10 +35,6 @@ namespace PmEngine.Vk.Migrations
             migrationBuilder.DropColumn(
                 name: "Name",
                 table: "VkDataUserEntity");
-
-            migrationBuilder.DropColumn(
-                name: "SessionData",
-                table: "UserEntity");
         }
     }
 }

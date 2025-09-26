@@ -17,7 +17,7 @@
 	<Import Project="..\VersionBuilder.props" />
 	
 	<ItemGroup>
-		<PackageReference Include="PmEngine.Core" Version="1.905.506.1408" />
+		<PackageReference Include="PmEngine.Core" Version="1.905.604.234" />
 		<PackageReference Include="VkNet" Version="1.79.0-alpha-108" />
 	</ItemGroup>
 

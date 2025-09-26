@@ -77,7 +77,7 @@ namespace PmEngine.Vk
                     if (userId is not null)
                         vkUser.Owner = context.Set<UserEntity>().First(u => u.Id == userId);
                     else
-                        vkUser.Owner = new();
+                        vkUser.Owner = new() { RegistrationDate = DateTime.Now, LastOnlineDate = DateTime.Now };
 
                     await context.Set<VkDataUserEntity>().AddAsync(vkUser);
                     await context.SaveChangesAsync();
